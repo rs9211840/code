@@ -18,17 +18,29 @@ app.use(express.static(path.join(__dirname,'../public/')));
 */
 app.get('/help',(req,res)=>{
 
-    res.send('Hello don\'t worry i will help you');
+   // res.send('Hello don\'t worry i will help you');
+
+   res.sendFile('help.html', {
+    root: path.join(__dirname, '../public/')
+    })
 })
 
 app.get('/wheather',(req,res)=>{
 
-    res.send('Mausam acha hai');
+    //res.send('Mausam acha hai');
+
+    res.sendFile('wheather.html', {
+        root: path.join(__dirname, '../public/')
+        })
 })
 
 app.get('/about',(req,res)=>{
 
-    res.send('My name is Anthony Gonsalvis');
+    //res.send('My name is Anthony Gonsalvis');
+
+    res.sendFile('about.html', {
+        root: path.join(__dirname, '../public/')
+        })
 })
 
 
