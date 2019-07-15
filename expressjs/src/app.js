@@ -2,27 +2,37 @@ const path=require('path');
 
 const express =require('express');
 
+const hbs=require('hbs');
 const app = express(); 
 
+const partialPath =path.join(__dirname,'../views');
 console.log(path.join(__dirname,'../public/index.html'));
 //Below line will update the root by index.html lying inside public
-app.use(express.static(path.join(__dirname,'../public/')));
+//app.use(express.static(path.join(__dirname,'../public/')));
 
-/*app.get('',(req,res) =>{
+app.set('view engine','hbs');
+hbs.registerPartials(partialPath);
+app.get('',(req,res) =>{
 
    // res.send(path.join(__dirname,'../public/index.html'));
-   //app.use(express.static(path.join(__dirname,'../public/')));
-
-   res.send('Send the response i m root');
+  // app.use(express.static(path.join(__dirname,'../public/')));
+    res.render('index',{
+        name:'rahul'
+    })
+   //res.send('Send the response i m root');
 })
-*/
+
 app.get('/help',(req,res)=>{
 
    // res.send('Hello don\'t worry i will help you');
 
-   res.sendFile('help.html', {
+   /*res.sendFile('help.html', {
     root: path.join(__dirname, '../public/')
     })
+    */
+   res.render('help',{
+       name:'rahul'
+   })
 })
 
 app.get('/wheather',(req,res)=>{
@@ -35,12 +45,12 @@ app.get('/wheather',(req,res)=>{
 })
 
 app.get('/about',(req,res)=>{
-
+    res.render('about')
     //res.send('My name is Anthony Gonsalvis');
 
-    res.sendFile('about.html', {
+    /*res.sendFile('about.html', {
         root: path.join(__dirname, '../public/')
-        })
+        })*/
 })
 
 

@@ -7,3 +7,4 @@ request({url:url},(err,res)=>{
     console.log('Latitude is '+data.features[0].geometry.coordinates[0]);
     console.log('Longitude is '+data.features[0].geometry.coordinates[1]);
 })
+  
