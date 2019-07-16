@@ -6,11 +6,13 @@ const hbs=require('hbs');
 const app = express(); 
 
 const partialPath =path.join(__dirname,'../views');
-console.log(path.join(__dirname,'../public/index.html'));
+console.log(partialPath)
+// console.log(path.join(__dirname,'../public/index.html'));
 //Below line will update the root by index.html lying inside public
 //app.use(express.static(path.join(__dirname,'../public/')));
 
 app.set('view engine','hbs');
+app.set('views', partialPath);
 hbs.registerPartials(partialPath);
 app.get('',(req,res) =>{
 
@@ -19,7 +21,7 @@ app.get('',(req,res) =>{
     res.render('index',{
         name:'rahul'
     })
-   //res.send('Send the response i m root');
+//    res.send('Send the response i m root');
 })
 
 app.get('/help',(req,res)=>{
@@ -53,7 +55,9 @@ app.get('/about',(req,res)=>{
         })*/
 })
 
-
-app.listen(3001,()=>{
+// app.get('*',()=>{
+//     app.send('Bhai aissa koi page he nai hai');
+// })
+app.listen(3000,()=>{
     console.log('server is running');
 });
